@@ -26,8 +26,8 @@ public class Comida {
     public String getDescripcion() {return descripcion;}
     public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
     
-    public int getNivelDificultad() {return nivelDificultad;}
-    public void setNivelDificultad (int nivelDificultad) {this.nivelDificultad = nivelDificultad;}
+    public int getIdNivelDificultad() {return nivelDificultad;}
+    public void setIdNivelDificultad (int nivelDificultad) {this.nivelDificultad = nivelDificultad;}
     
     public int getTiempoEstimado() {return tiempoEstimado;}
     public void setTiempoEstimado(int tiempoEstimado) {this.tiempoEstimado = tiempoEstimado;}
