@@ -6,15 +6,18 @@ public class Comida {
 	private String descripcion;
 	private int nivelDificultad;
 	private int tiempoEstimado;
-	private String rutaImagen;
+	private byte[] imagen;
 	
-	public Comida (int id, String nombre, String descripcion, int nivelDificultad, int tiempoEstimado, String rutaImagen) {
+	public byte[] getImagen() { return imagen; }
+	public void setImagen(byte[] imagen) { this.imagen = imagen; }
+	
+	public Comida (int id, String nombre, String descripcion, int nivelDificultad, int tiempoEstimado, byte[] imagen) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivelDificultad = nivelDificultad;
 		this.tiempoEstimado = tiempoEstimado;
-		this.rutaImagen = rutaImagen;
+		this.imagen = imagen;
 	}
 	
     public int getId() { return id; }
@@ -32,6 +35,6 @@ public class Comida {
     public int getTiempoEstimado() {return tiempoEstimado;}
     public void setTiempoEstimado(int tiempoEstimado) {this.tiempoEstimado = tiempoEstimado;}
     
-    public String getRutaImagen() {return rutaImagen;}
-    public void setRutaImagen(String rutaImagen) {this.rutaImagen = rutaImagen;}
+    public byte[] getRutaImagen() {return imagen;}
+    public void setRutaImagen(byte[] imagen) {this.imagen = imagen;}
 }
