@@ -23,7 +23,7 @@ public class VentanaPrincipal extends Frame {
         setBackground(new Color(245, 245, 245));
 
         // Título
-        Label titulo = new Label("Comidas Disponibles");
+        Label titulo = new Label("Menú");
         titulo.setFont(new Font("Segoe UI", Font.BOLD, 22));
         titulo.setAlignment(Label.CENTER);
         titulo.setBackground(new Color(33, 150, 243));
@@ -96,6 +96,14 @@ public class VentanaPrincipal extends Frame {
             // Añadir el panel de comida a la ventana
             panelComidas.add(comidaPanel);
         }
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                dispose();
+                System.exit(0);
+            }
+        });
+
+        setVisible(true);
     }
 
     public static void main(String[] args) {

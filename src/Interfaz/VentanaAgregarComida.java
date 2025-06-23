@@ -18,6 +18,7 @@ public class VentanaAgregarComida extends Frame {
     private TextField txtRutaImagen;
     private Button btnSeleccionarImagen;
     private Button btnGuardar;
+    private Button btnAtras;
 
     public VentanaAgregarComida() {
         setTitle("Agregar Comida");
@@ -39,7 +40,7 @@ public class VentanaAgregarComida extends Frame {
         add(titulo, BorderLayout.NORTH);
 
         // Panel de formulario con GridLayout
-        Panel formulario = new Panel(new GridLayout());
+        Panel formulario = new Panel(new GridLayout(6, 2, 20, 20));
         formulario.setBackground(new Color(245, 245, 245));
         formulario.setFont(fuente);
         formulario.setPreferredSize(new Dimension(400, 300));
@@ -67,6 +68,20 @@ public class VentanaAgregarComida extends Frame {
         btnSeleccionarImagen.setBackground(new Color(76, 175, 80));
         btnSeleccionarImagen.setForeground(Color.WHITE);
         btnSeleccionarImagen.setFont(fuente);
+        
+        btnGuardar = new Button("Guardar Comida");
+        btnGuardar.setFont(fuente);
+        btnGuardar.setBackground(new Color(33, 150, 243));
+        btnGuardar.setForeground(Color.WHITE);
+        btnGuardar.setFont(fuente);
+        
+        btnAtras = new Button("Atrás");
+        btnAtras.setFont(fuente);
+        btnAtras.setPreferredSize(new Dimension(250, 40));
+        btnAtras.setBackground(new Color(255, 87, 34));  // Color naranja
+        btnAtras.setForeground(Color.WHITE);
+        btnAtras.setFont(fuente);
+
 
         // Añadir componentes al formulario
         formulario.add(new Label("Nombre:")); formulario.add(txtNombre);
@@ -75,26 +90,15 @@ public class VentanaAgregarComida extends Frame {
         formulario.add(new Label("Tiempo Estimado (min):")); formulario.add(txtTiempoEstimado);
         formulario.add(new Label("Imagen:")); formulario.add(txtRutaImagen);
         formulario.add(new Label("")); formulario.add(btnSeleccionarImagen);
+        formulario.add(new Label("")); formulario.add(btnGuardar);
+        formulario.add(new Label("")); formulario.add(btnAtras);
 
         add(formulario, BorderLayout.CENTER);
 
-        // Botón Guardar
-        Panel panelBoton = new Panel();
-        btnGuardar = new Button("Guardar Comida");
-        btnGuardar.setFont(fuente);
-        btnGuardar.setBackground(new Color(33, 150, 243));
-        btnGuardar.setForeground(Color.WHITE);
-        panelBoton.add(btnGuardar);
-        panelBoton.setBackground(new Color(245, 245, 245));
-        add(panelBoton, BorderLayout.SOUTH);
-
-        // Acción: seleccionar imagen
-        btnSeleccionarImagen.addActionListener(e -> {
-            FileDialog dialogo = new FileDialog(this, "Seleccionar imagen", FileDialog.LOAD);
-            dialogo.setVisible(true);
-            if (dialogo.getFile() != null) {
-                txtRutaImagen.setText(dialogo.getDirectory() + dialogo.getFile());
-            }
+        // Acción del botón "Atrás"
+        btnAtras.addActionListener(e -> {
+            new VentanaPrincipal();  // Abre la ventana principal
+            dispose();  // Cierra la ventana actual
         });
 
         // Acción: guardar comida
