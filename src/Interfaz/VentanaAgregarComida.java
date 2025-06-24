@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.nio.file.Files;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class VentanaAgregarComida extends Frame {
@@ -31,7 +33,7 @@ public class VentanaAgregarComida extends Frame {
         Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
 
         // Título
-        Label titulo = new Label("Registro de Comidas");
+        Label titulo = new Label("Registrar Comida");
         titulo.setFont(new Font("Segoe UI", Font.BOLD, 22));
         titulo.setAlignment(Label.CENTER);
         titulo.setBackground(new Color(33, 150, 243));
@@ -95,6 +97,19 @@ public class VentanaAgregarComida extends Frame {
 
         add(formulario, BorderLayout.CENTER);
 
+        btnSeleccionarImagen.addActionListener(e -> {
+            // Crear un cuadro de diálogo para seleccionar un archivo de imagen
+            FileDialog fileDialog = new FileDialog(this, "Seleccionar Imagen", FileDialog.LOAD);
+            fileDialog.setFile("*.jpg;*.png;*.gif");  // Filtro de tipo de archivo
+            fileDialog.setVisible(true);
+
+            // Obtener el archivo seleccionado
+            String archivoSeleccionado = fileDialog.getDirectory() + fileDialog.getFile();
+            if (archivoSeleccionado != null && !archivoSeleccionado.isEmpty()) {
+                txtRutaImagen.setText(archivoSeleccionado);  // Mostrar la ruta del archivo en el TextField
+            }
+        });
+        
         // Acción del botón "Atrás"
         btnAtras.addActionListener(e -> {
             new VentanaPrincipal();  // Abre la ventana principal

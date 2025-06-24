@@ -52,7 +52,7 @@ public class ComidaDAO {
                         rs.getInt("tiempo_estimado"),
                         rs.getBytes("imagen")  // Obtener la imagen como bytes
                 );
-                listaComidas.add(comida);  // Agregar la comida a la lista
+                listaComidas.add(comida);  // Agregar la comida a la lista	
             }
 
         } catch (SQLException e) {
@@ -60,4 +60,20 @@ public class ComidaDAO {
         }
         return listaComidas;  // Devolver la lista de comidas
     }
-}	
+    
+    public boolean eliminarComida(String nombre) {
+        String sql = "DELETE FROM comidas WHERE nombre = ?";
+        
+        try (Connection con = Conexion.getConexion();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setString(1, nombre);  // Establecemos el nombre de la comida a eliminar
+
+            int filasAfectadas = stmt.executeUpdate();
+            return filasAfectadas > 0;  // Si se eliminó al menos una fila, retornamos true
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar comida: " + e.getMessage());
+            return false;  // Si ocurrió un error, retornamos false
+        }
+    }
+}
